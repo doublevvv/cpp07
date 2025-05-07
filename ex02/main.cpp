@@ -6,12 +6,13 @@
 /*   By: doublevv <vv>                              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 15:23:05 by doublevv          #+#    #+#             */
-/*   Updated: 2025/05/06 15:26:08 by doublevv         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:45:10 by doublevv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <Array.hpp>
+
 
 #define MAX_VAL 750
 int main(int, char**)

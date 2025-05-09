@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Array_HPP
-#define Array_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
 #include <iostream>
+#include <cstdlib>
 
 template<typename T> class Array
 {
@@ -27,6 +28,8 @@ template<typename T> class Array
 		int	operator[](int i);
 
 	private:
+		T	*array;
+		int	size;
 };
 
 #endif
@@ -35,28 +38,40 @@ template<typename T>
 Array<T>::Array()
 {
 	std::cout << "Array Default Constructor called" << std::endl;
-	std::string	tab[0] = {};
+	this->array = new T[0];
 }
+
 template<typename T>
 Array<T>::Array(unsigned int n)
 {
-	std::string	tab[n] = {};
+	this->array = new T[n];
 }
+
 template<typename T>
 Array<T>::Array(const Array &obj)
 {
 	std::cout << "Array Copy Constructor called" << std::endl;
-	*this = obj;
+	this->size = obj.size;
+	this->array = new T[size];
+
+	(*this) = obj;
 }
+
 template<typename T>
 Array<T>::~Array()
 {
 	std::cout << "Array Destructor called " << std::endl;
+	delete [] this->array;
 }
+
 template<typename T>
 Array<T> &Array<T>::operator=(const Array &rhs)
 {
 	std::cout << "Array Copy Assignment Operator called" <<  std::endl;
+	this->size = rhs.size;
+	this->size = new T[size];
+	for (int i = 0; i < rhs.size; i++)
+		this->array[i] = rhs.array[i];
 	return (*this);
 }
 
@@ -72,7 +87,12 @@ int	Array<T>::operator[](int i)
 	{
 		std::cerr << e.what();
 	}
-	return (0)
+	return (0);
+}
+
+int	Array::size(void)
+{
+	return (this->size);
 }
 
 
